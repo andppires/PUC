@@ -11,14 +11,16 @@ jobs:
 
     steps:
       - name: Checkout repository
-        
-    
-uses: actions/checkout@v2
+        uses: actions/checkout@v2
         with:
-          repository: actions/checkout  # Adicione essa linha
+          
+ 
+repository: actions/checkout
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        
+ 
+uses: actions/setup-python@v2
         with:
           python-version: 3.11
 
@@ -26,10 +28,10 @@ uses: actions/checkout@v2
         run: |
           pip install -r requirements.txt
       
-      - name: Run tests
-        
       
-run: |
+     
+- name: Run tests
+        run: |
           python -m pytest
 
       # Adicionar etapas relacionadas ao Docker
@@ -38,5 +40,5 @@ run: |
 
       - name: Start Docker container
         
-    
+   
 run: docker run -d -p 5000:5000 puc_producao
