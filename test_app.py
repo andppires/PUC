@@ -8,5 +8,5 @@ def client():
 
 def test_index(client):
     response = client.get('/')
-    assert response.status_code == 400
-    assert 'Olá, está preparado? Tudo está mudando! alterado =)' in response.data.decode('utf-8')
+    assert response.status_code == 200
+    assert 'Olá, está preparado? Tudo está mudando! alterado2 =)' in response.data.decode('utf-8')
