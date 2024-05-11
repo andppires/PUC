@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+ame: CI/CD Pipeline
 
 on:
   push:
@@ -11,23 +11,24 @@ jobs:
 
     env:
       NODE_VERSION: 20
+      PYTHON_VERSION: 3.11
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          submodules: 'recursive'
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.11
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
         run: |
