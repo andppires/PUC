@@ -1,44 +1,42 @@
 name: CI/CD Pipeline
 
 on:
-push:
-branches:
-- main
+  push:
+    branches:
+      - main
 
 jobs:
-build:
-runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-yaml
-Copy code
-steps:
-  - name: Set up Node.js
-    uses: actions/setup-node@v3
-    with:
-      node-version: '20' # Atualizado para a versão 20 do Node.js
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Atualizado para a versão 20 do Node.js
 
-  - name: Set up Python
-    uses: actions/setup-python@v2
-    with:
-      python-version: '3.x' # Atualizado para uma versão genérica do Python 3.x
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Atualizado para uma versão genérica do Python 3.x
 
-  - name: Checkout repository
-    uses: actions/checkout@v2
-    with:
-      submodules: 'recursive'
-      token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-  - name: Install dependencies
-    run: |
-      pip install --upgrade pip
-      pip install -r requirements.txt
-  
-  - name: Run tests
-    run: |
-      python -m pytest
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run tests
+        run: |
+          python -m pytest
 
-  - name: Build Docker image
-    run: docker build -t puc_producao .
+      - name: Build Docker image
+        run: docker build -t puc_producao .
 
-  - name: Start Docker container
-    run: docker run -d -p 5000:5000 puc_producao
+      - name: Start Docker container
+        run: docker run -d -p 5000:5000 puc_producao
