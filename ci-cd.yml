@@ -1,0 +1,32 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          pip install Flask
+      
+      - name: Run tests
+        run: |
+          python -m pytest
+      
+      - name: Deploy
+        run: |
+          # Coloque aqui os comandos para fazer o deploy da sua aplicação
+          # Por exemplo, você pode implantar em um servidor usando ferramentas como SSH, FTP, ou serviços de nuvem como AWS, Google Cloud, Heroku, etc.
