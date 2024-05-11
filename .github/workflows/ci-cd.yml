@@ -43,4 +43,4 @@ jobs:
         run: docker build -t puc_producao .
 
       - name: Start Docker container
-        run: docker run -d -p 5000:5000 puc_producao 
+        run: docker run -d -p 5000:5000 puc_producao
