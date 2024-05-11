@@ -13,13 +13,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '16.x' # Atualizado para a versão 16 do Node.js
           check-latest: true
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.11'
+          python-version: '3.x' # Atualizado para uma versão genérica do Python 3.x
 
       - name: Checkout repository
         uses: actions/checkout@v2
