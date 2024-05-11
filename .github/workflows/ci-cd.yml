@@ -11,17 +11,15 @@ jobs:
 
     steps:
       - name: Set up Node.js
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y nodejs npm
-          sudo npm install -g n
-          sudo n latest
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          check-latest: true
 
       - name: Set up Python
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3.11 python3-pip
-          if [ ! -f /usr/bin/python ]; then sudo ln -s /usr/bin/python3.11 /usr/bin/python; fi
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
 
       - name: Checkout repository
         uses: actions/checkout@v2
