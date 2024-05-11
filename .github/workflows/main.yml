@@ -1,1 +1,34 @@
+name: CI/CD Pipeline
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Run tests
+        run: |
+          python -m pytest
+
+      # Adicionar etapas relacionadas ao Docker
+      - name: Build Docker image
+        run: docker build -t puc_producao .
+
+      - name: Start Docker container
+        run: docker run -d -p 5000:5000 puc_producao
