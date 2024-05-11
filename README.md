@@ -116,6 +116,3 @@ Contribuições são bem-vindas! Para contribuir com este projeto, siga estas et
 **Licença:**
 [Inclua aqui a licença do seu projeto, se houver.]
 Certifique-se de substituir SEU_USUARIO e SEU_REPOSITORIO pelos valores corretos do seu repositório.
-
-
-
