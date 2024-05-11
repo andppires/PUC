@@ -9,10 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    
-
-  
-steps:
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -29,12 +26,8 @@ steps:
         run: |
           python -m pytest
 
-      # Adicionar etapas relacionadas ao Docker
       - name: Build Docker image
         run: docker build -t puc_producao .
 
-      
-
- 
-- name: Start Docker container
+      - name: Start Docker container
         run: docker run -d -p 5000:5000 puc_producao

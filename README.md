@@ -85,7 +85,7 @@ python app.py
 bash
 Copy code
 
-Abra um navegador e acesse o seguinte URL: http://localhost:5000/.
+Abra um navegador e acesse o seguinte URL: http://localhost:5000
 
 **Testes Automatizados:**
 Os testes automatizados são executados automaticamente sempre que um novo código é enviado para o repositório. Para executar os testes manualmente, use o seguinte comando:
