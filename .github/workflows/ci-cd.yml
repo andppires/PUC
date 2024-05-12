@@ -2,11 +2,9 @@ name: CI/CD Pipeline
 
 on:
   
-  
 push:
     branches:
       
-  
 - main
 
 jobs:
@@ -14,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NODE_VERSION: 16
+      NODE_VERSION: 20
       PYTHON_VERSION: 3.11
 
     steps:
@@ -31,8 +29,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          
-          
+               
 submodules: 'recursive'
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -41,20 +38,14 @@ submodules: 'recursive'
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-  
-      
       - name: Run tests
-        
-    
+          
 run: |
           python -m pytest
 
-      
-   
 - name: Build Docker image
         run: docker build -t puc_producao .
         
       - name: Start Docker container
         
-  
 run: docker run -d -p 5000:5000 puc_producao
