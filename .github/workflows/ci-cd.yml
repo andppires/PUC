@@ -2,9 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    
-    
-branches:
+    branches:
       - main
 
 jobs:
@@ -17,22 +15,27 @@ jobs:
 
     steps:
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        
+ 
+uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
+          
+       
+python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Checkout repository
+      
+
+   
+- name: Checkout repository
         uses: actions/checkout@v2
         with:
           submodules: 'recursive'
-          
-   
-token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
         run: |
@@ -40,12 +43,12 @@ token: ${{ secrets.GITHUB_TOKEN }}
           pip install -r requirements.txt
 
       - name: Run tests
-        
-   
-run: |
+        run: |
           python -m pytest
 
-      - name: Build Docker image
+      
+ 
+- name: Build Docker image
         run: docker build -t puc_producao .
         
       - name: Start Docker container
