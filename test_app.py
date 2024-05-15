@@ -8,5 +8,5 @@ def client():
 
 def test_index(client):
     response = client.get('/')
-    assert response.status_code == 400  # Verificar se o código de status é 200 (OK)
-    assert 'Olá, está preparado? Tudo está mudando!' in response.data.decode('utf-8')  # Verificar se a mensagem está na resposta
+    assert response.status_code == 400  # Verificar se o código de status é 400 (Bad Request)
+    assert b'Olá, está preparado? Tudo está mudando!' in response.data  # Verificar se a mensagem está na resposta
