@@ -43,6 +43,3 @@ jobs:
 
       - name: Start Docker container
         run: docker run -d -p 5000:5000 puc_producao
-
-      - name: Restart Docker container
-        run: docker restart 5e8bccb3be4a
